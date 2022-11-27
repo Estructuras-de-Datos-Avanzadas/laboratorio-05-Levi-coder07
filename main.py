@@ -3,12 +3,13 @@ import math
 def d_int(a, b): # define a distance function for numbers
     return math.sqrt ((b.x-a.x)**2 + (b.y-a.y)**2)
 class Country: 
-    def __init__(self, name, x, y):
+    def __init__(self,name, x, y):
         self.name = name
         self.x = x
         self.y = y
 def main():
     mtree = MTree(d_int,max_node_size=4)# create an empty M-tree
+    
     Peru = Country("Peru",66477,5983)
     Bulgaria = Country("Bulgaria",101106,4139)
     Bosnia = Country("Bosnia and Herzegovina",84584,3870)
@@ -29,13 +30,14 @@ def main():
     Slovenia= Country("Slovenia", 202419 ,2512)
     Colombia = Country("Colombia" ,98156 ,2489)
     USA = Country("USA ",148104 ,2406)
+    countries = [Bulgaria,Bosnia,Montenegro,Macedonia,Hungary,Czechia,Georgia,Romania,Gibraltar,Brazil,Marino,Croatia,Slovakia,Argentina,Armenia,Lituania,Slovenia,Colombia,USA]
     mtree.add(Peru)
     mtree.add(Bulgaria)
     mtree.add(Bosnia)
     mtree.add(Montenegro)
     mtree.add(Macedonia)
     #mtree.draw()
-    mtree.add(Hungary)
+    #mtree.add(Hungary)
     mtree.add(Czechia)
     mtree.add(Georgia)
     mtree.add(Romania)
@@ -50,12 +52,16 @@ def main():
     mtree.add(Slovenia)
     mtree.add(Colombia)
     mtree.add(USA)
+    Hungary = Country("Hungary",114600 ,3586)
     result = mtree.search(Hungary)
+    lista = []
     for i in result:
-        print(i.name + ' at (' + str(i.x) + ', ' + str(i.y) + ') with ' + str(d_int(Hungary, i)))
+        print(i.name + ' at (' + str(i.x) + ', ' + str(i.y) + ') with ' + str(d_int(Peru, i)))
+    for i in countries:
+        if d_int(Peru,i)<=37000 :
+            lista.append(i.name)
+    print(lista)
     
-    lista = list(result)
     
-    print(d_int(Peru,Bulgaria))
 if __name__ == '__main__':
 	main()
